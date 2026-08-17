@@ -35,5 +35,8 @@ function checkPage() {
 
     if (isGamePage && video) {
         injectScript();
-
     }
+}
+
+
+

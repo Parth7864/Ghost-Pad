@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>InputBridge Gamepad Test</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: white;
+            padding: 30px;
+        }
+
+        .box {
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            width: 500px;
+        }
+
+        pre {
+            background: black;
+            padding: 15px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>🎮 InputBridge Test</h1>
+
+<div class="box">
+
+<p>
+Press:
+</p>
+
+<ul>
+<li>WASD = Left stick</li>
+<li>Move mouse = Right stick (after adding it)</li>
+</ul>
+
+
+<h3>Controller Data:</h3>
+
+<pre id="output">
+Waiting...
+</pre>
+
+
+</div>
+
+
+<script>
+
+const output =
+document.getElementById("output");
+
+
+function update(){
+
+    const gamepads =
+        navigator.getGamepads();
+
+
+    let controller =
+        gamepads[0];
+
+
+    if(!controller){
+
+        output.textContent =
+        "No controller detected";
+
+        requestAnimationFrame(update);
+        return;
+    }
+
+
+
+    output.textContent =
+JSON.stringify({
+
+    id:
+    controller.id,
+
+
+    connected:
+    controller.connected,
+
+
+    axes:
+    controller.axes,
+
+
+    buttons:
+    controller.buttons.map(
+        b=>({
+            pressed:b.pressed,
+            value:b.value
+        })
+    )
+
+}, null, 2);
+
+
+
+requestAnimationFrame(update);
+
+}
+
+
+update();
+
+</script>
+
+
+</body>
+</html>
+
+console.log(finished)

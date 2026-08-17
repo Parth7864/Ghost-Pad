@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "InputBridge",
+  "version": "0.1.0",
+
+  "description": "Convert keyboard and mouse input into a virtual gamepad.",
+
+  "permissions": [
+    "storage"
+  ],
+
+  "host_permissions": [
+    "https://www.xbox.com/*"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.xbox.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "main-world.js"
+      ],
+      "matches": [
+        "https://www.xbox.com/*"
+      ]
+    }
+  ]
+}
+
+
+
+
